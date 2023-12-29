@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">StopwatchApp</string>
+
+    <!-- Title -->
+    <string name="title_stopwatch">STOPWATCH</string>
+
+    <!-- Button Labels -->
+    <string name="start_button_description">Start Button</string>
+    <string name="pause_button_description">Pause Button</string>
+    <string name="reset_button_description">Reset Button</string>
+    <string name="_00_00_00_000">00:00:00.000</string>
+    <string name="stopwatch">STOPWATCH</string>
+    <string name="lap_button_description">Lap Button</string>
+    <string name="_1">1.</string>
+    <string name="_00_00_000">00:00.000</string>
+
+</resources>

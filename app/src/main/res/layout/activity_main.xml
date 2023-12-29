@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/titleCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stopwatch"
+            android:textColor="#1C1212"
+            android:textSize="40sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/stopwatchCardView"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#0E5791"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/lapsRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleCardView"
+        tools:ignore="TextSizeCheck">
+
+        <TextView
+            android:id="@+id/stopwatchTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/_00_00_00_000"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            tools:ignore="TextContrastCheck" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lapsRecyclerView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/stopwatchCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"/>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/startButton"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circular_button_background"
+            android:contentDescription="@string/start_button_description"
+            android:foreground="@drawable/startimage"
+            android:onClick="toggleStartPause"
+            android:src="@drawable/startimage" />
+
+        <ImageButton
+            android:id="@+id/pauseButton"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circular_button_background"
+            android:contentDescription="@string/pause_button_description"
+            android:foreground="@drawable/pauseimage"
+            android:onClick="toggleStartPause"
+            android:src="@drawable/pauseimage"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/resetButton"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circular_button_background"
+            android:contentDescription="@string/reset_button_description"
+            android:foreground="@drawable/resetimage"
+            android:onClick="resetStopwatch"
+            android:src="@drawable/resetimage" />
+
+        <ImageButton
+            android:id="@+id/lapButton"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circular_button_background"
+            android:contentDescription="@string/lap_button_description"
+            android:foreground="@drawable/timelaps"
+            android:onClick="lapStopwatch"
+            android:src="@drawable/timelaps" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
