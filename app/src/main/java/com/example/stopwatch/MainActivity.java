@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
             startTime = SystemClock.uptimeMillis() - pausedTime;
             handler.postDelayed(runnable, 0);
             isRunning = true;
+
+            // Show the "Pause" button and hide the "Start" button
+            ImageButton startButton = findViewById(R.id.startButton);
+            ImageButton pauseButton = findViewById(R.id.pauseButton);
+            startButton.setVisibility(View.GONE);
+            pauseButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -60,8 +66,15 @@ public class MainActivity extends AppCompatActivity {
             handler.removeCallbacks(runnable);
             pausedTime = SystemClock.uptimeMillis() - startTime;
             isRunning = false;
+
+            // Show the "Start" button and hide the "Pause" button
+            ImageButton startButton = findViewById(R.id.startButton);
+            ImageButton pauseButton = findViewById(R.id.pauseButton);
+            startButton.setVisibility(View.VISIBLE);
+            pauseButton.setVisibility(View.GONE);
         }
     }
+
 
     public void resetStopwatch(View view) {
         if (!isRunning) {
