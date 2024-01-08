@@ -30,7 +30,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/stopwatchCardView"
         android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:layout_height="110dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
@@ -75,23 +75,38 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
+
         <ImageButton
-            android:id="@+id/startButton"
+            android:id="@+id/resetButton"
             android:layout_width="82dp"
             android:layout_height="82dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/circular_button_background"
+            android:contentDescription="@string/reset_button_description"
+            android:foreground="@drawable/resetimage"
+            android:onClick="resetStopwatch"
+            android:src="@drawable/resetimage"
+            tools:ignore="RedundantDescriptionCheck" />
+
+        <ImageButton
+            android:id="@+id/startButton"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circular_button_background"
             android:contentDescription="@string/start_button_description"
             android:foreground="@drawable/startimage"
             android:onClick="toggleStartPause"
-            android:src="@drawable/startimage" />
+            android:src="@drawable/startimage"
+            tools:ignore="RedundantDescriptionCheck" />
 
         <ImageButton
             android:id="@+id/pauseButton"
             android:layout_width="82dp"
             android:layout_height="82dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/circular_button_background"
             android:contentDescription="@string/pause_button_description"
@@ -99,18 +114,6 @@
             android:onClick="toggleStartPause"
             android:src="@drawable/pauseimage"
             android:visibility="gone" />
-
-        <ImageButton
-            android:id="@+id/resetButton"
-            android:layout_width="82dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/circular_button_background"
-            android:contentDescription="@string/reset_button_description"
-            android:foreground="@drawable/resetimage"
-            android:onClick="resetStopwatch"
-            android:src="@drawable/resetimage" />
 
         <ImageButton
             android:id="@+id/lapButton"
@@ -122,6 +125,7 @@
             android:contentDescription="@string/lap_button_description"
             android:foreground="@drawable/timelaps"
             android:onClick="lapStopwatch"
-            android:src="@drawable/timelaps" />
+            android:src="@drawable/timelaps"
+            tools:ignore="RedundantDescriptionCheck" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

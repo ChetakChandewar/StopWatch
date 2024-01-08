@@ -12,14 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/** @noinspection ALL*/
 public class LapAdapter extends RecyclerView.Adapter<LapAdapter.ViewHolder> {
 
-    private final Context context;
-    private final ArrayList<Long> lapTimes;
+    private Context context;
+    private ArrayList<Long> lapTimes;
+    private int lapNumber;
 
     public LapAdapter(Context context, ArrayList<Long> lapTimes) {
         this.context = context;
         this.lapTimes = lapTimes;
+        this.lapNumber = lapTimes.size();
     }
 
     @NonNull
@@ -29,19 +32,15 @@ public class LapAdapter extends RecyclerView.Adapter<LapAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         long lapTime = lapTimes.get(position);
-        int minutes = (int) (lapTime / 60000);
-        int seconds = (int) (lapTime % 60000 / 1000);
-        int milliseconds = (int) (lapTime % 1000);
+        holder.lapTimeTextView.setText(formatTime(lapTime));
 
-        @SuppressLint("DefaultLocale") String lapTimeString = String.format("%02d:%02d.%03d", minutes, seconds, milliseconds);
+        // Set lap number in regular order (1, 2, 3, ...)
+        int displayedLapNumber = lapNumber - position;
+        holder.lapNumberTextView.setText(String.valueOf("Lap " + displayedLapNumber + "." ));
 
-        // Set lap number (position + 1 because position is zero-based)
-        holder.lapNumberTextView.setText((position + 1) + ".  ");
-        holder.lapTimeTextView.setText(lapTimeString);
     }
 
     @Override
@@ -58,5 +57,26 @@ public class LapAdapter extends RecyclerView.Adapter<LapAdapter.ViewHolder> {
             lapNumberTextView = itemView.findViewById(R.id.lapNumberTextView);
             lapTimeTextView = itemView.findViewById(R.id.lapTimeTextView);
         }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private String formatTime(long time) {
+        int hours = (int) (time / 3600000);
+        int minutes = (int) (time % 3600000 / 60000);
+        int seconds = (int) (time % 60000 / 1000);
+        int milliseconds = (int) (time % 1000);
+
+        String timeFormatted;
+        if (hours > 0) {
+            timeFormatted = String.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds);
+        } else {
+            timeFormatted = String.format("%02d:%02d.%03d", minutes, seconds, milliseconds);
+        }
+
+        return timeFormatted;
+    }
+
+    public void incrementLapNumber() {
+        lapNumber++;
     }
 }

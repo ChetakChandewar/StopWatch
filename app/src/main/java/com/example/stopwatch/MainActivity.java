@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    @SuppressLint("NotifyDataSetChanged")
     public void resetStopwatch(View view) {
         if (!isRunning) {
             startTime = 0L;
@@ -89,10 +89,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void lapStopwatch(View view) {
         if (isRunning) {
-            lapTimes.add(elapsedTime);
-            lapAdapter.notifyDataSetChanged();
+            // Record the lap time at the moment the lap button is pressed
+            long currentLapTime = elapsedTime;
+            lapTimes.add(0, currentLapTime); // Add the lap time at the beginning of the list
+            lapAdapter.incrementLapNumber();
+            lapAdapter.notifyItemInserted(0);
+
+            // Scroll to the first item in the RecyclerView
+            lapsRecyclerView.scrollToPosition(0);
         }
     }
+
+
+
+
 
     private final Runnable runnable = new Runnable() {
         public void run() {

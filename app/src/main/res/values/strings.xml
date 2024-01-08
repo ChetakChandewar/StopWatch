@@ -11,7 +11,7 @@
     <string name="pause_button_description">Pause Button</string>
     <string name="reset_button_description">Reset Button</string>
     <string name="_00_00_00_000">00:00:00.000</string>
-    <string name="stopwatch">STOPWATCH</string>
+    <string name="stopwatch">StopWatch</string>
     <string name="lap_button_description">Lap Button</string>
     <string name="_1">1.</string>
     <string name="_00_00_000">00:00.000</string>
